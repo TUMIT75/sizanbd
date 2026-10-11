@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #FAFAF8;
+    color: #111111;
+  }
+}
+
+.font-bangla {
+  font-family: 'Hind Siliguri', 'Inter', sans-serif;
+}
+
+/* Custom scrollbar for clean minimal look */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAFAF8;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4D4D0;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A3A3A0;
+}

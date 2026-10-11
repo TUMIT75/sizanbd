@@ -1,0 +1,58 @@
+import { Category } from '../types';
+
+export const CATEGORIES: Category[] = [
+  {
+    id: 'cat-phones',
+    slug: 'phones',
+    name: 'Phones',
+    tagline: 'Flagship & budget smartphones with official BTRC approval or verified global warranty.',
+    image: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=600&q=80',
+    itemCount: 12,
+    iconName: 'Smartphone',
+  },
+  {
+    id: 'cat-tablets',
+    slug: 'tablets',
+    name: 'Tablets',
+    tagline: 'iPads and Android tablets for creative work, study, and daily productivity.',
+    image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=600&q=80',
+    itemCount: 5,
+    iconName: 'Tablet',
+  },
+  {
+    id: 'cat-laptops',
+    slug: 'laptops',
+    name: 'Laptops',
+    tagline: 'Apple MacBooks and ultraportables with authentic manufacturer warranty.',
+    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80',
+    itemCount: 6,
+    iconName: 'Laptop',
+  },
+  {
+    id: 'cat-audio',
+    slug: 'audio',
+    name: 'Audio',
+    tagline: 'Wireless earbuds, noise-canceling headphones, and portable speakers.',
+    image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=600&q=80',
+    itemCount: 8,
+    iconName: 'Headphones',
+  },
+  {
+    id: 'cat-wearables',
+    slug: 'wearables',
+    name: 'Wearables',
+    tagline: 'Smartwatches and fitness bands from Apple, Samsung, and Amazfit.',
+    image: 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80',
+    itemCount: 6,
+    iconName: 'Watch',
+  },
+  {
+    id: 'cat-accessories',
+    slug: 'accessories',
+    name: 'Accessories',
+    tagline: 'Original fast chargers, GaN power bricks, MagSafe accessories, and cables.',
+    image: 'https://images.unsplash.com/photo-1622445262464-84b1456045b6?auto=format&fit=crop&w=600&q=80',
+    itemCount: 7,
+    iconName: 'Cable',
+  },
+];

@@ -1,0 +1,6 @@
+{
+  "name": "SIZANBD - Premium Gadgets & Devices",
+  "description": "Official & verified gadgets, phones, laptops, audio and accessories with physical showroom in Dhaka, Bangladesh.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
