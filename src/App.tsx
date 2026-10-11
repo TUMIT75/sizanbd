@@ -20,6 +20,7 @@ import { TrackOrderPage } from './pages/TrackOrderPage';
 import { WishlistPage } from './pages/WishlistPage';
 import { OffersPage } from './pages/OffersPage';
 import { AccountPage } from './pages/AccountPage';
+import { LoginPage } from './pages/LoginPage';
 import { StoresPage } from './pages/StoresPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
@@ -59,6 +60,7 @@ export default function App() {
             <Route path="/wishlist" element={<WishlistPage />} />
             <Route path="/offers" element={<OffersPage />} />
             <Route path="/account" element={<AccountPage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/stores" element={<StoresPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />

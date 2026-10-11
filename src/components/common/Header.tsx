@@ -24,6 +24,7 @@ export const Header: React.FC = () => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
   const {
+    user,
     getCartCount,
     wishlist,
     compareList,
@@ -286,14 +287,21 @@ export const Header: React.FC = () => {
               )}
             </Link>
 
-            {/* Account */}
+            {/* Account / Sign In */}
             <Link
-              to="/account"
-              className="p-2 text-[#111111] hover:text-[#1E5EFF] hover:bg-neutral-100 rounded-lg transition-colors"
-              aria-label="Customer Account"
-              title="My Account"
+              to={user ? "/account" : "/login"}
+              className="flex items-center gap-1.5 p-2 text-[#111111] hover:text-[#1E5EFF] hover:bg-neutral-100 rounded-lg transition-colors"
+              aria-label={user ? `Customer Account (${user.name})` : "Sign In with Google"}
+              title={user ? `Signed in as ${user.name}` : "Sign In with Google"}
             >
               <User className="w-5 h-5" />
+              {!user ? (
+                <span className="hidden xl:inline text-xs font-semibold">Sign In</span>
+              ) : (
+                <span className="hidden xl:inline text-xs font-semibold max-w-[80px] truncate">
+                  {user.name.split(' ')[0]}
+                </span>
+              )}
             </Link>
 
             {/* Cart Button */}

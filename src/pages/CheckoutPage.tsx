@@ -8,6 +8,16 @@ import { Input } from '../components/common/Input';
 import { Button } from '../components/common/Button';
 import { SafeImage } from '../components/common/SafeImage';
 import {
+  BkashLogo,
+  NagadLogo,
+  VisaLogo,
+  MastercardLogo,
+  AmexLogo,
+  SslCommerzLogo,
+  CodLogo,
+  PaymentLogosRow,
+} from '../components/common/PaymentLogos';
+import {
   Truck,
   Building2,
   CreditCard,
@@ -391,131 +401,153 @@ export const CheckoutPage: React.FC = () => {
               {/* Cash on Delivery */}
               <label
                 onClick={() => setPaymentMethod('cod')}
-                className={`p-3.5 rounded-xl border flex items-start gap-3 cursor-pointer transition-all ${
+                className={`p-3.5 rounded-xl border flex items-start justify-between gap-3 cursor-pointer transition-all ${
                   paymentMethod === 'cod'
                     ? 'border-[#111111] bg-[#FAFAF8] ring-1 ring-[#111111]'
                     : 'border-[#E5E5E5] bg-white hover:border-[#CCCCCC]'
                 }`}
               >
-                <input
-                  type="radio"
-                  name="payment"
-                  checked={paymentMethod === 'cod'}
-                  onChange={() => setPaymentMethod('cod')}
-                  className="mt-1"
-                />
-                <div>
-                  <p className="text-xs font-bold text-[#111111]">
-                    Cash on Delivery (COD)
-                  </p>
-                  <p className="text-[11px] text-[#737373] mt-0.5">
-                    Pay in cash after inspecting parcel upon delivery inside Dhaka or at showroom.
-                  </p>
+                <div className="flex items-start gap-3">
+                  <input
+                    type="radio"
+                    name="payment"
+                    checked={paymentMethod === 'cod'}
+                    onChange={() => setPaymentMethod('cod')}
+                    className="mt-1"
+                  />
+                  <div>
+                    <p className="text-xs font-bold text-[#111111]">
+                      Cash on Delivery (COD)
+                    </p>
+                    <p className="text-[11px] text-[#737373] mt-0.5">
+                      Pay in cash after inspecting parcel upon delivery inside Dhaka or at showroom pickup.
+                    </p>
+                  </div>
                 </div>
+                <CodLogo />
               </label>
 
               {/* bKash */}
               <label
                 onClick={() => setPaymentMethod('bkash')}
-                className={`p-3.5 rounded-xl border flex items-start gap-3 cursor-pointer transition-all ${
+                className={`p-3.5 rounded-xl border flex items-start justify-between gap-3 cursor-pointer transition-all ${
                   paymentMethod === 'bkash'
                     ? 'border-[#111111] bg-[#FAFAF8] ring-1 ring-[#111111]'
                     : 'border-[#E5E5E5] bg-white hover:border-[#CCCCCC]'
                 }`}
               >
-                <input
-                  type="radio"
-                  name="payment"
-                  checked={paymentMethod === 'bkash'}
-                  onChange={() => setPaymentMethod('bkash')}
-                  className="mt-1"
-                />
-                <div>
-                  <p className="text-xs font-bold text-[#111111]">
-                    bKash Online Payment
-                  </p>
-                  <p className="text-[11px] text-[#737373] mt-0.5">
-                    Fast automated payment via bKash payment gateway. Instant receipt issued.
-                  </p>
+                <div className="flex items-start gap-3">
+                  <input
+                    type="radio"
+                    name="payment"
+                    checked={paymentMethod === 'bkash'}
+                    onChange={() => setPaymentMethod('bkash')}
+                    className="mt-1"
+                  />
+                  <div>
+                    <p className="text-xs font-bold text-[#111111]">
+                      bKash Direct Gateway
+                    </p>
+                    <p className="text-[11px] text-[#737373] mt-0.5">
+                      Fast automated payment via official bKash merchant gateway. Instant SMS receipt.
+                    </p>
+                  </div>
                 </div>
+                <BkashLogo />
               </label>
 
               {/* Nagad */}
               <label
                 onClick={() => setPaymentMethod('nagad')}
-                className={`p-3.5 rounded-xl border flex items-start gap-3 cursor-pointer transition-all ${
+                className={`p-3.5 rounded-xl border flex items-start justify-between gap-3 cursor-pointer transition-all ${
                   paymentMethod === 'nagad'
                     ? 'border-[#111111] bg-[#FAFAF8] ring-1 ring-[#111111]'
                     : 'border-[#E5E5E5] bg-white hover:border-[#CCCCCC]'
                 }`}
               >
-                <input
-                  type="radio"
-                  name="payment"
-                  checked={paymentMethod === 'nagad'}
-                  onChange={() => setPaymentMethod('nagad')}
-                  className="mt-1"
-                />
-                <div>
-                  <p className="text-xs font-bold text-[#111111]">
-                    Nagad Digital Payment
-                  </p>
-                  <p className="text-[11px] text-[#737373] mt-0.5">
-                    Pay securely using your Nagad account credentials.
-                  </p>
+                <div className="flex items-start gap-3">
+                  <input
+                    type="radio"
+                    name="payment"
+                    checked={paymentMethod === 'nagad'}
+                    onChange={() => setPaymentMethod('nagad')}
+                    className="mt-1"
+                  />
+                  <div>
+                    <p className="text-xs font-bold text-[#111111]">
+                      Nagad Digital Payment
+                    </p>
+                    <p className="text-[11px] text-[#737373] mt-0.5">
+                      Pay securely with 1.2% special cashback campaign using Nagad account credentials.
+                    </p>
+                  </div>
                 </div>
+                <NagadLogo />
               </label>
 
-              {/* SSLCommerz (Card) */}
+              {/* SSLCommerz (Card: Visa / Mastercard / AMEX) */}
               <label
                 onClick={() => setPaymentMethod('card')}
-                className={`p-3.5 rounded-xl border flex items-start gap-3 cursor-pointer transition-all ${
+                className={`p-3.5 rounded-xl border flex items-start justify-between gap-3 cursor-pointer transition-all ${
                   paymentMethod === 'card'
                     ? 'border-[#111111] bg-[#FAFAF8] ring-1 ring-[#111111]'
                     : 'border-[#E5E5E5] bg-white hover:border-[#CCCCCC]'
                 }`}
               >
-                <input
-                  type="radio"
-                  name="payment"
-                  checked={paymentMethod === 'card'}
-                  onChange={() => setPaymentMethod('card')}
-                  className="mt-1"
-                />
-                <div>
-                  <p className="text-xs font-bold text-[#111111]">
-                    Visa / Mastercard / AMEX (SSLCommerz)
-                  </p>
-                  <p className="text-[11px] text-[#737373] mt-0.5">
-                    Encrypted bank card payment with 3D Secure OTP verification.
-                  </p>
+                <div className="flex items-start gap-3">
+                  <input
+                    type="radio"
+                    name="payment"
+                    checked={paymentMethod === 'card'}
+                    onChange={() => setPaymentMethod('card')}
+                    className="mt-1"
+                  />
+                  <div>
+                    <p className="text-xs font-bold text-[#111111]">
+                      Visa / Mastercard / AMEX (SSLCommerz)
+                    </p>
+                    <p className="text-[11px] text-[#737373] mt-0.5">
+                      Encrypted local & international bank card payment with 3D Secure OTP verification.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1 shrink-0 flex-wrap justify-end">
+                  <VisaLogo compact />
+                  <MastercardLogo compact />
+                  <AmexLogo compact />
+                  <SslCommerzLogo compact />
                 </div>
               </label>
 
               {/* EMI */}
               <label
                 onClick={() => setPaymentMethod('emi')}
-                className={`p-3.5 rounded-xl border flex items-start gap-3 cursor-pointer transition-all ${
+                className={`p-3.5 rounded-xl border flex items-start justify-between gap-3 cursor-pointer transition-all ${
                   paymentMethod === 'emi'
                     ? 'border-[#111111] bg-[#FAFAF8] ring-1 ring-[#111111]'
                     : 'border-[#E5E5E5] bg-white hover:border-[#CCCCCC]'
                 }`}
               >
-                <input
-                  type="radio"
-                  name="payment"
-                  checked={paymentMethod === 'emi'}
-                  onChange={() => setPaymentMethod('emi')}
-                  className="mt-1"
-                />
-                <div>
-                  <p className="text-xs font-bold text-[#111111]">
-                    0% Credit Card EMI (3, 6, 9, 12 Months)
-                  </p>
-                  <p className="text-[11px] text-[#737373] mt-0.5">
-                    Avail 0% interest with 24 partner banks in Bangladesh for carts above ৳15,000.
-                  </p>
+                <div className="flex items-start gap-3">
+                  <input
+                    type="radio"
+                    name="payment"
+                    checked={paymentMethod === 'emi'}
+                    onChange={() => setPaymentMethod('emi')}
+                    className="mt-1"
+                  />
+                  <div>
+                    <p className="text-xs font-bold text-[#111111]">
+                      0% Credit Card EMI (3, 6, 9, 12 Months)
+                    </p>
+                    <p className="text-[11px] text-[#737373] mt-0.5">
+                      Avail 0% interest with 24 partner banks in Bangladesh for carts above ৳15,000.
+                    </p>
+                  </div>
                 </div>
+                <span className="text-[10px] font-bold text-[#1E5EFF] bg-[#1E5EFF]/10 border border-[#1E5EFF]/20 px-2 py-0.5 rounded shrink-0">
+                  24 Banks
+                </span>
               </label>
             </div>
           </div>

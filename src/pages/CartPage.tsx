@@ -7,6 +7,7 @@ import { Breadcrumb } from '../components/common/Breadcrumb';
 import { Button } from '../components/common/Button';
 import { SafeImage } from '../components/common/SafeImage';
 import { EmptyState } from '../components/common/EmptyState';
+import { PaymentLogosRow } from '../components/common/PaymentLogos';
 import {
   ShoppingBag,
   Trash2,
@@ -272,6 +273,10 @@ export const CartPage: React.FC = () => {
             <div className="pt-2 text-[11px] text-[#737373] flex items-center gap-2 justify-center">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
               <span>Official invoice with printed IMEI generated</span>
+            </div>
+
+            <div className="pt-3 border-t border-[#E5E5E5]/70">
+              <PaymentLogosRow variant="light" compact showTitle />
             </div>
           </div>
         </div>

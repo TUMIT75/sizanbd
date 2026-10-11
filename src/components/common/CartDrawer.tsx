@@ -5,6 +5,7 @@ import { formatBDT } from '../../utils/formatters';
 import { X, ShoppingBag, Plus, Minus, Trash2, ArrowRight } from 'lucide-react';
 import { Button } from './Button';
 import { SafeImage } from './SafeImage';
+import { PaymentLogosRow } from './PaymentLogos';
 
 export const CartDrawer: React.FC = () => {
   const {
@@ -201,6 +202,10 @@ export const CartDrawer: React.FC = () => {
               <p className="text-[11px] text-center text-[#737373]">
                 Free showroom pickup or same-day delivery in Dhaka
               </p>
+
+              <div className="pt-2 border-t border-[#E5E5E5] flex justify-center">
+                <PaymentLogosRow variant="light" compact showTitle={false} />
+              </div>
             </div>
           )}
         </aside>

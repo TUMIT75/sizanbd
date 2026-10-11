@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { PaymentLogosRow } from './PaymentLogos';
 
 export const Footer: React.FC = () => {
   return (
@@ -171,17 +172,8 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Payment Methods & Socials */}
-        <div className="py-6 flex flex-col md:flex-row items-center justify-between gap-4 border-b border-neutral-800">
-          <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-400">
-            <span className="text-neutral-500 font-medium mr-1">Accepted Payments:</span>
-            <span className="px-2 py-1 bg-neutral-900 border border-neutral-800 rounded text-neutral-300 font-medium">bKash</span>
-            <span className="px-2 py-1 bg-neutral-900 border border-neutral-800 rounded text-neutral-300 font-medium">Nagad</span>
-            <span className="px-2 py-1 bg-neutral-900 border border-neutral-800 rounded text-neutral-300 font-medium">Visa</span>
-            <span className="px-2 py-1 bg-neutral-900 border border-neutral-800 rounded text-neutral-300 font-medium">Mastercard</span>
-            <span className="px-2 py-1 bg-neutral-900 border border-neutral-800 rounded text-neutral-300 font-medium">AMEX</span>
-            <span className="px-2 py-1 bg-neutral-900 border border-neutral-800 rounded text-neutral-300 font-medium">SSLCommerz</span>
-            <span className="px-2 py-1 bg-neutral-900 border border-neutral-800 rounded text-neutral-300 font-medium">Cash on Delivery</span>
-          </div>
+        <div className="py-6 flex flex-col lg:flex-row items-center justify-between gap-4 border-b border-neutral-800">
+          <PaymentLogosRow variant="dark" />
 
           {/* Social Links (Clean SVG, no emojis) */}
           <div className="flex items-center space-x-3 text-neutral-400">

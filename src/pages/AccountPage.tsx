@@ -5,6 +5,7 @@ import { formatBDT } from '../utils/formatters';
 import { Breadcrumb } from '../components/common/Breadcrumb';
 import { Input } from '../components/common/Input';
 import { Button } from '../components/common/Button';
+import { GoogleLoginButton } from '../components/common/GoogleLoginButton';
 import {
   User,
   Package,
@@ -18,51 +19,66 @@ import {
 } from 'lucide-react';
 
 export const AccountPage: React.FC = () => {
-  const { orders, addToast } = useStore();
+  const { user, login, logout, orders, addToast } = useStore();
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
   const [activeTab, setActiveTab] = useState<'orders' | 'profile' | 'addresses'>('orders');
 
   // Login form state
   const [loginPhone, setLoginPhone] = useState('01712345678');
-  const [loginPass, setLoginPass] = useState('••••••••');
+  const [loginPass, setLoginPass] = useState('');
 
   // Customer profile info
   const customer = {
-    name: 'Tawhid Hasan',
+    name: user?.name || 'Tawhid Hasan',
     phone: '01712345678',
-    email: 'tawhid.hasan@example.com',
+    email: user?.email || 'tawhid.hasan@gmail.com',
     memberSince: 'March 2024',
     verified: true,
   };
 
   const handleLoginSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoggedIn(true);
-    addToast('Welcome Back', 'Logged in as ' + customer.name, 'success');
+    login({
+      name: 'Tawhid Hasan',
+      email: 'tawhid.hasan@gmail.com',
+      avatar: 'https://lh3.googleusercontent.com/a/default-user=s96-c',
+    });
+    addToast('Welcome Back', 'Logged in as Tawhid Hasan', 'success');
   };
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
-    addToast('Logged Out', 'You have been signed out.', 'info');
+    logout();
   };
 
-  if (!isLoggedIn) {
+  if (!user) {
     return (
       <div className="max-w-md mx-auto px-4 py-12 space-y-6">
         <Breadcrumb items={[{ label: 'My Account' }]} />
 
-        <div className="bg-white border border-[#E5E5E5] rounded-xl p-6 shadow-2xs space-y-5">
+        <div className="bg-white border border-[#E5E5E5] rounded-xl p-6 sm:p-8 shadow-2xs space-y-5">
           <div className="text-center space-y-1">
             <h1 className="text-xl font-bold text-[#111111]">
-              {authMode === 'login' ? 'Sign In to SIZANBD' : 'Create an Account'}
+              Sign in to SIZANBD Account
             </h1>
             <p className="text-xs text-[#737373]">
-              {authMode === 'login'
-                ? 'Access order history and saved delivery addresses'
-                : 'Join SIZANBD for faster checkout and warranty tracking'}
+              Access order history, track warranties, and manage delivery addresses.
             </p>
+          </div>
+
+          {/* Prominent Login with Google Button */}
+          <div className="space-y-2">
+            <GoogleLoginButton text="Continue with Google" />
+            <p className="text-[11px] text-[#737373] text-center">
+              One-click instant login with Google authentication
+            </p>
+          </div>
+
+          <div className="relative flex items-center justify-center">
+            <div className="border-t border-[#E5E5E5] w-full" />
+            <span className="bg-white px-3 text-[11px] text-[#A3A3A3] uppercase font-medium">
+              or use mobile number
+            </span>
           </div>
 
           <form onSubmit={handleLoginSubmit} className="space-y-4">

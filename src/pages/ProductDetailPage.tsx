@@ -8,6 +8,7 @@ import { Breadcrumb } from '../components/common/Breadcrumb';
 import { Badge } from '../components/common/Badge';
 import { Button } from '../components/common/Button';
 import { SafeImage } from '../components/common/SafeImage';
+import { PaymentLogosRow } from '../components/common/PaymentLogos';
 import { QuantitySelector } from '../components/product/QuantitySelector';
 import { VariantSelector } from '../components/product/VariantSelector';
 import { SpecTable } from '../components/product/SpecTable';
@@ -382,6 +383,11 @@ export const ProductDetailPage: React.FC = () => {
                 <strong className="text-[#111111] block">Warranty Guarantee</strong>
                 <span>{product.warranty.official} · {product.warranty.parts}</span>
               </div>
+            </div>
+
+            {/* Accepted Payments with official brand logos */}
+            <div className="pt-2.5 border-t border-[#E5E5E5]/70">
+              <PaymentLogosRow variant="light" compact showTitle />
             </div>
           </div>
         </div>
