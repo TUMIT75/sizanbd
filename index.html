@@ -11,10 +11,34 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
   </head>
   <body class="bg-[#FAFAF8] text-[#111111] antialiased selection:bg-[#1E5EFF]/15 selection:text-[#1E5EFF]">
-    <div id="root"></div>
+    <div id="root">
+      <!-- Pre-rendered SSR shell for search engines, social crawlers, and instant visual load -->
+      <header style="background:#111111;color:#ffffff;padding:8px 16px;font-size:12px;display:flex;justify-content:space-between;align-items:center;">
+        <span>Hotline: 09612-404040 (9 AM - 10 PM)</span>
+        <span>Showrooms: Bashundhara City & Jamuna Future Park</span>
+      </header>
+      <nav style="background:#ffffff;border-bottom:1px solid #E5E5E5;padding:16px;display:flex;justify-content:space-between;align-items:center;">
+        <div style="font-size:22px;font-weight:900;letter-spacing:-0.02em;">SIZAN<span style="color:#1E5EFF;">BD</span></div>
+        <div style="display:flex;gap:16px;font-size:13px;font-weight:600;">
+          <a href="/shop" style="color:#111111;text-decoration:none;">Shop All</a>
+          <a href="/category/phones" style="color:#111111;text-decoration:none;">Phones</a>
+          <a href="/category/laptops" style="color:#111111;text-decoration:none;">Laptops</a>
+          <a href="/category/audio" style="color:#111111;text-decoration:none;">Audio</a>
+          <a href="/stores" style="color:#111111;text-decoration:none;">Showrooms</a>
+        </div>
+      </nav>
+      <main style="max-width:1200px;margin:32px auto;padding:0 16px;">
+        <div style="background:#ffffff;border:1px solid #E5E5E5;border-radius:16px;padding:32px;">
+          <span style="color:#1E5EFF;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">New at SIZANBD · Official Warranty</span>
+          <h1 style="font-size:32px;font-weight:800;color:#111111;margin:8px 0 12px;letter-spacing:-0.02em;">Galaxy S25 Ultra is here. Come try it in store.</h1>
+          <p style="color:#6B6B6B;font-size:14px;max-width:560px;line-height:1.6;">Original devices, real warranty, and verified BTRC approval. Visit our Bashundhara City flagship or Jamuna Future Park showroom to check your device before you buy.</p>
+          <div style="margin-top:20px;font-size:18px;font-weight:700;color:#111111;">From ৳1,54,999 · EMI Available</div>
+        </div>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

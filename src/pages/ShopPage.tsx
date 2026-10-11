@@ -197,16 +197,6 @@ export const ShopPage: React.FC = () => {
 
       {/* Main Content: Sidebar + Products */}
       <div className="flex items-start gap-6">
-        {/* Desktop Sidebar */}
-        <div className="hidden lg:block">
-          <FilterSidebar
-            filters={filters}
-            setFilters={setFilters}
-            productCount={filteredProducts.length}
-          />
-        </div>
-
-        {/* Mobile Filter Drawer */}
         <FilterSidebar
           filters={filters}
           setFilters={setFilters}

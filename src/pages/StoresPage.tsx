@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { OUTLETS } from '../data/outlets';
 import { Breadcrumb } from '../components/common/Breadcrumb';
 import { Button } from '../components/common/Button';
+import { SafeImage } from '../components/common/SafeImage';
 import { MapPin, Phone, Clock, ExternalLink, ShieldCheck, Sparkles } from 'lucide-react';
 
 export const StoresPage: React.FC = () => {
@@ -40,13 +41,13 @@ export const StoresPage: React.FC = () => {
             >
               <div>
                 <div className="relative h-48 w-full bg-[#FAFAF8] overflow-hidden">
-                  <img
+                  <SafeImage
                     src={outlet.image}
                     alt={outlet.name}
                     className="w-full h-full object-cover"
                   />
                   {outlet.isFlagship && (
-                    <span className="absolute top-3 left-3 bg-[#111111] text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
+                    <span className="absolute top-3 left-3 bg-[#111111] text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded z-20">
                       Flagship Store
                     </span>
                   )}

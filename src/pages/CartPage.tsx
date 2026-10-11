@@ -5,6 +5,7 @@ import { PRODUCTS } from '../data/products';
 import { formatBDT } from '../utils/formatters';
 import { Breadcrumb } from '../components/common/Breadcrumb';
 import { Button } from '../components/common/Button';
+import { SafeImage } from '../components/common/SafeImage';
 import { EmptyState } from '../components/common/EmptyState';
 import {
   ShoppingBag,
@@ -110,7 +111,7 @@ export const CartPage: React.FC = () => {
                 to={`/product/${item.slug}`}
                 className="w-20 h-20 bg-[#FAFAF8] border border-[#E5E5E5] rounded-lg p-2 shrink-0 flex items-center justify-center"
               >
-                <img
+                <SafeImage
                   src={item.image}
                   alt={item.title}
                   className="max-h-full max-w-full object-contain"

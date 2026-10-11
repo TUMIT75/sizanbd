@@ -7,6 +7,7 @@ import { formatBDT } from '../utils/formatters';
 import { Breadcrumb } from '../components/common/Breadcrumb';
 import { Button } from '../components/common/Button';
 import { Badge } from '../components/common/Badge';
+import { SafeImage } from '../components/common/SafeImage';
 import { Modal } from '../components/common/Modal';
 import { X, Plus, ShoppingBag, Scale, Check, Trash2 } from 'lucide-react';
 
@@ -136,7 +137,7 @@ export const ComparePage: React.FC = () => {
                       </button>
 
                       <div className="w-24 h-24 mx-auto bg-white border border-[#E5E5E5] rounded-lg p-2 flex items-center justify-center">
-                        <img
+                        <SafeImage
                           src={product.thumbnail}
                           alt={product.title}
                           className="max-h-full max-w-full object-contain"
@@ -267,7 +268,7 @@ export const ComparePage: React.FC = () => {
               className="flex items-center justify-between p-3 border border-[#E5E5E5] rounded-lg hover:bg-[#FAFAF8] transition-colors"
             >
               <div className="flex items-center gap-3 min-w-0">
-                <img
+                <SafeImage
                   src={product.thumbnail}
                   alt={product.title}
                   className="w-12 h-12 object-contain rounded bg-white border border-[#E5E5E5] p-1 shrink-0"

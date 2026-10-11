@@ -18,11 +18,18 @@ interface StoreState {
   // Recently Viewed
   recentlyViewed: Product[];
 
+  // User Auth
+  user: { name: string; email: string; avatar?: string } | null;
+
   // Orders history
   orders: OrderDetails[];
 
   // Toast notifications
   toasts: ToastMessage[];
+
+  // Actions - User Auth
+  login: (userData: { name: string; email: string; avatar?: string }) => void;
+  logout: () => void;
 
   // Actions - Cart
   addToCart: (item: Omit<CartItem, 'quantity'>, quantity?: number) => void;
@@ -77,6 +84,11 @@ export const useStore = create<StoreState>()(
       wishlist: [],
       compareList: [],
       recentlyViewed: [],
+      user: {
+        name: 'Tawhid Hasan',
+        email: 'tawhid.hasan@example.com',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80',
+      },
       orders: [
         {
           orderId: 'SZ-2026-89412',
@@ -115,6 +127,16 @@ export const useStore = create<StoreState>()(
         },
       ],
       toasts: [],
+
+      // User Auth
+      login: (userData) => {
+        set({ user: userData });
+        get().addToast('Signed In', `Signed in as ${userData.name}`, 'success');
+      },
+      logout: () => {
+        set({ user: null });
+        get().addToast('Signed Out', 'You have been signed out.', 'info');
+      },
 
       // Cart implementations
       addToCart: (item, quantity = 1) => {
@@ -322,6 +344,7 @@ export const useStore = create<StoreState>()(
         wishlist: state.wishlist,
         compareList: state.compareList,
         recentlyViewed: state.recentlyViewed,
+        user: state.user,
         orders: state.orders,
       }),
     }

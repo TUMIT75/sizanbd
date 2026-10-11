@@ -6,6 +6,7 @@ import { formatBDT, isValidBDPhone, generateOrderId } from '../utils/formatters'
 import { Breadcrumb } from '../components/common/Breadcrumb';
 import { Input } from '../components/common/Input';
 import { Button } from '../components/common/Button';
+import { SafeImage } from '../components/common/SafeImage';
 import {
   Truck,
   Building2,
@@ -531,7 +532,7 @@ export const CheckoutPage: React.FC = () => {
             <div className="space-y-3 max-h-60 overflow-y-auto pr-1">
               {cart.map((item) => (
                 <div key={item.id} className="flex items-center gap-3 text-xs">
-                  <img
+                  <SafeImage
                     src={item.image}
                     alt={item.title}
                     className="w-12 h-12 rounded object-contain border border-[#E5E5E5] p-1 shrink-0 bg-[#FAFAF8]"

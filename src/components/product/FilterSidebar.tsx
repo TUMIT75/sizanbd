@@ -265,48 +265,51 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
     </div>
   );
 
-  // Mobile Drawer
-  if (isOpenOnMobile) {
-    return (
-      <div className="fixed inset-0 z-50 overflow-hidden lg:hidden">
-        <div
-          className="absolute inset-0 bg-black/40 backdrop-blur-xs transition-opacity"
-          onClick={onCloseMobile}
-          aria-hidden="true"
-        />
-        <div className="fixed inset-y-0 left-0 max-w-full flex pr-10">
-          <div className="w-screen max-w-xs bg-white p-5 shadow-2xl flex flex-col justify-between overflow-y-auto">
-            <div>
-              <div className="flex items-center justify-between pb-4 border-b border-[#E5E5E5] mb-4">
-                <span className="text-base font-bold text-[#111111]">Refine Results</span>
+  return (
+    <>
+      {/* Desktop Sticky Sidebar (Visible only on lg and up) */}
+      <aside
+        aria-label="Product filters"
+        className="hidden lg:block w-64 shrink-0 bg-white border border-[#E5E5E5] rounded-xl p-5 sticky top-24 self-start"
+      >
+        {content}
+      </aside>
+
+      {/* Mobile Drawer (Triggered by mobile filter button) */}
+      {isOpenOnMobile && (
+        <div className="fixed inset-0 z-50 overflow-hidden lg:hidden">
+          <div
+            className="absolute inset-0 bg-black/40 backdrop-blur-xs transition-opacity"
+            onClick={onCloseMobile}
+            aria-hidden="true"
+          />
+          <div className="fixed inset-y-0 left-0 max-w-full flex pr-10">
+            <div className="w-screen max-w-xs bg-white p-5 shadow-2xl flex flex-col justify-between overflow-y-auto">
+              <div>
+                <div className="flex items-center justify-between pb-4 border-b border-[#E5E5E5] mb-4">
+                  <span className="text-base font-bold text-[#111111]">Refine Results</span>
+                  <button
+                    onClick={onCloseMobile}
+                    className="p-1 text-[#737373] hover:text-[#111111] cursor-pointer"
+                    aria-label="Close filters"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+                {content}
+              </div>
+              <div className="pt-4 border-t border-[#E5E5E5] mt-6">
                 <button
                   onClick={onCloseMobile}
-                  className="p-1 text-[#737373] hover:text-[#111111]"
-                  aria-label="Close filters"
+                  className="w-full py-2.5 bg-[#111111] hover:bg-[#262626] text-white text-xs font-semibold rounded-lg cursor-pointer"
                 >
-                  <X className="w-5 h-5" />
+                  Apply Filters ({productCount})
                 </button>
               </div>
-              {content}
-            </div>
-            <div className="pt-4 border-t border-[#E5E5E5] mt-6">
-              <button
-                onClick={onCloseMobile}
-                className="w-full py-2.5 bg-[#111111] text-white text-xs font-semibold rounded-lg"
-              >
-                Apply Filters ({productCount})
-              </button>
             </div>
           </div>
         </div>
-      </div>
-    );
-  }
-
-  // Desktop Static Sidebar
-  return (
-    <aside aria-label="Product filters" className="w-64 shrink-0 bg-white border border-[#E5E5E5] rounded-xl p-5 self-start">
-      {content}
-    </aside>
+      )}
+    </>
   );
 };

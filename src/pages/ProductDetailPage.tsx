@@ -7,6 +7,7 @@ import { formatBDT, calculateEMI } from '../utils/formatters';
 import { Breadcrumb } from '../components/common/Breadcrumb';
 import { Badge } from '../components/common/Badge';
 import { Button } from '../components/common/Button';
+import { SafeImage } from '../components/common/SafeImage';
 import { QuantitySelector } from '../components/product/QuantitySelector';
 import { VariantSelector } from '../components/product/VariantSelector';
 import { SpecTable } from '../components/product/SpecTable';
@@ -161,9 +162,10 @@ export const ProductDetailPage: React.FC = () => {
             onMouseLeave={() => setIsZoomed(false)}
             onMouseMove={handleMouseMove}
           >
-            <img
+            <SafeImage
               src={activeImage}
               alt={product.title}
+              priority
               className={`max-h-full max-w-full object-contain transition-transform duration-200 ${
                 isZoomed ? 'scale-150' : 'scale-100'
               }`}
@@ -175,7 +177,7 @@ export const ProductDetailPage: React.FC = () => {
             />
 
             {/* Badges on Gallery */}
-            <div className="absolute top-4 left-4 flex flex-col gap-1.5 pointer-events-none">
+            <div className="absolute top-4 left-4 flex flex-col gap-1.5 pointer-events-none z-20">
               <Badge type="status" value={product.status} />
               {hasDiscount && (
                 <span className="text-[11px] font-bold text-white bg-[#1E5EFF] px-2 py-0.5 rounded-sm">
@@ -184,7 +186,7 @@ export const ProductDetailPage: React.FC = () => {
               )}
             </div>
 
-            <div className="absolute bottom-3 right-3 text-[10px] text-[#A3A3A3] bg-white/80 px-2 py-0.5 rounded pointer-events-none">
+            <div className="absolute bottom-3 right-3 text-[10px] text-[#A3A3A3] bg-white/80 px-2 py-0.5 rounded pointer-events-none z-20">
               Hover to zoom
             </div>
           </div>
@@ -203,7 +205,7 @@ export const ProductDetailPage: React.FC = () => {
                       : 'border-[#E5E5E5] opacity-70 hover:opacity-100'
                   }`}
                 >
-                  <img
+                  <SafeImage
                     src={img}
                     alt={`${product.title} thumb ${idx}`}
                     className="w-full h-full object-contain"

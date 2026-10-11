@@ -185,14 +185,6 @@ export const CategoryPage: React.FC = () => {
 
       {/* Main Grid & Filters */}
       <div className="flex items-start gap-6">
-        <div className="hidden lg:block">
-          <FilterSidebar
-            filters={filters}
-            setFilters={setFilters}
-            productCount={filteredProducts.length}
-          />
-        </div>
-
         <FilterSidebar
           filters={filters}
           setFilters={setFilters}

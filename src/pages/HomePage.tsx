@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { PRODUCTS } from '../data/products';
 import { CATEGORIES } from '../data/categories';
 import { BRANDS } from '../data/brands';
 import { OUTLETS } from '../data/outlets';
 import { ProductCard } from '../components/product/ProductCard';
+import { HeroSection } from '../components/home/HeroSection';
+import { SafeImage } from '../components/common/SafeImage';
 import { formatBDT } from '../utils/formatters';
 import {
   ShieldCheck,
@@ -17,44 +19,11 @@ import {
   Clock,
   ArrowRight,
   ExternalLink,
-  ChevronLeft,
 } from 'lucide-react';
 import { Button } from '../components/common/Button';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
-  const [activeSlide, setActiveSlide] = useState(0);
-
-  // Clean real photography hero slides
-  const heroSlides = [
-    {
-      title: 'iPhone 16 Pro Max',
-      subtitle: 'Aerospace-grade titanium. A18 Pro. Active official warranty.',
-      cta: 'Explore Flagship',
-      link: '/product/apple-iphone-16-pro-max',
-      priceText: 'From ৳1,69,999',
-      image: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1200&q=80',
-    },
-    {
-      title: 'MacBook Air M3',
-      subtitle: '18 hours battery life. Fanless silence. Work anywhere in the city.',
-      cta: 'View MacBooks',
-      link: '/product/apple-macbook-air-m3-13-inch',
-      priceText: 'From ৳1,34,500',
-      image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=80',
-    },
-    {
-      title: 'Galaxy S25 Ultra 5G',
-      subtitle: 'Snapdragon 8 Elite. Built-in S-Pen. Anti-reflective Gorilla Armor.',
-      cta: 'Check Device',
-      link: '/product/samsung-galaxy-s25-ultra',
-      priceText: 'From ৳1,54,999',
-      image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80',
-    },
-  ];
-
-  const nextSlide = () => setActiveSlide((prev) => (prev + 1) % heroSlides.length);
-  const prevSlide = () => setActiveSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
 
   // New arrivals & best deals
   const newArrivals = PRODUCTS.filter((p) => p.isNewArrival || p.featured).slice(0, 4);
@@ -79,78 +48,10 @@ export const HomePage: React.FC = () => {
   const flagshipOutlet = OUTLETS[0];
 
   return (
-    <div className="space-y-14 md:space-y-20 pb-16">
-      {/* 1. Hero Section: Clean minimal image slider */}
+    <div className="space-y-12 md:space-y-16 pb-16">
+      {/* 1. Redesigned Product-Focused Editorial Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-4">
-        <div className="relative bg-white border border-[#E5E5E5] rounded-2xl overflow-hidden min-h-[380px] sm:min-h-[440px] md:min-h-[500px] flex items-center">
-          <div className="grid grid-cols-1 md:grid-cols-2 w-full h-full items-center">
-            {/* Slide Text Content */}
-            <div className="p-6 sm:p-10 md:p-14 z-10 flex flex-col justify-center">
-              <span className="text-xs uppercase tracking-widest font-semibold text-[#1E5EFF] mb-2">
-                Showroom Verified Hardware
-              </span>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#111111] tracking-tight leading-tight">
-                {heroSlides[activeSlide].title}
-              </h1>
-              <p className="text-sm sm:text-base text-[#6B6B6B] mt-3 max-w-md leading-relaxed">
-                {heroSlides[activeSlide].subtitle}
-              </p>
-
-              <div className="mt-6 flex flex-wrap items-center gap-4">
-                <Link to={heroSlides[activeSlide].link}>
-                  <Button variant="primary" size="lg" rightIcon={<ArrowRight className="w-4 h-4" />}>
-                    {heroSlides[activeSlide].cta}
-                  </Button>
-                </Link>
-                <div className="text-left">
-                  <span className="text-[11px] uppercase tracking-wider text-[#737373] block">Official Price</span>
-                  <span className="text-base sm:text-lg font-bold text-[#111111]">
-                    {heroSlides[activeSlide].priceText}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Slide Image */}
-            <div className="relative h-64 md:h-full w-full bg-[#FAFAF8] flex items-center justify-center p-6 md:p-12">
-              <img
-                src={heroSlides[activeSlide].image}
-                alt={heroSlides[activeSlide].title}
-                className="max-h-[360px] max-w-full object-contain mix-blend-multiply transition-opacity duration-300"
-              />
-            </div>
-          </div>
-
-          {/* Slider Controls */}
-          <div className="absolute bottom-4 right-4 flex items-center gap-2 z-20">
-            <button
-              onClick={prevSlide}
-              className="w-9 h-9 rounded-full bg-white/90 border border-[#E5E5E5] text-[#111111] flex items-center justify-center hover:bg-white shadow-xs cursor-pointer"
-              aria-label="Previous slide"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <div className="flex items-center gap-1.5 px-2">
-              {heroSlides.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveSlide(i)}
-                  className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                    activeSlide === i ? 'w-6 bg-[#111111]' : 'w-2 bg-[#D4D4D0]'
-                  }`}
-                  aria-label={`Slide ${i + 1}`}
-                />
-              ))}
-            </div>
-            <button
-              onClick={nextSlide}
-              className="w-9 h-9 rounded-full bg-white/90 border border-[#E5E5E5] text-[#111111] flex items-center justify-center hover:bg-white shadow-xs cursor-pointer"
-              aria-label="Next slide"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
+        <HeroSection />
       </section>
 
       {/* 2. Trust Strip with Icons */}
@@ -236,7 +137,7 @@ export const HomePage: React.FC = () => {
               className="group bg-white border border-[#E5E5E5] rounded-xl p-3 text-center transition-all duration-200 hover:-translate-y-1 hover:shadow-sm"
             >
               <div className="aspect-square w-full rounded-lg bg-[#FAFAF8] overflow-hidden mb-3 p-3 flex items-center justify-center">
-                <img
+                <SafeImage
                   src={cat.image}
                   alt={cat.name}
                   className="max-h-full max-w-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
@@ -361,12 +262,12 @@ export const HomePage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Showroom Photo */}
             <div className="relative min-h-[300px] lg:min-h-[420px] bg-[#FAFAF8]">
-              <img
+              <SafeImage
                 src={flagshipOutlet.image}
                 alt="SIZANBD Bashundhara City Flagship Showroom"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute top-4 left-4 bg-[#111111] text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded">
+              <div className="absolute top-4 left-4 bg-[#111111] text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded z-20">
                 Flagship Experience Center
               </div>
             </div>

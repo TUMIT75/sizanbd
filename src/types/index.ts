@@ -37,6 +37,9 @@ export interface Product {
   condition: ProductCondition;
   status: ProductStatus;
   stockStatus: StockStatus;
+  stockLeft?: number;
+  priceUpdatedToday?: boolean;
+  boughtCount?: number;
   sku: string;
   rating: number;
   reviewCount: number;
@@ -48,6 +51,7 @@ export interface Product {
   shortDescription: string;
   fullDescription: string;
   variants: ProductVariant[];
+  connectivity?: 'Wireless' | 'Bluetooth' | 'Wired' | 'Type-C';
   warranty: {
     official: string;
     parts: string;

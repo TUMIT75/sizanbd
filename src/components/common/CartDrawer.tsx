@@ -4,6 +4,7 @@ import { useStore } from '../../store/useStore';
 import { formatBDT } from '../../utils/formatters';
 import { X, ShoppingBag, Plus, Minus, Trash2, ArrowRight } from 'lucide-react';
 import { Button } from './Button';
+import { SafeImage } from './SafeImage';
 
 export const CartDrawer: React.FC = () => {
   const {
@@ -105,10 +106,10 @@ export const CartDrawer: React.FC = () => {
             ) : (
               cart.map((item) => (
                 <div key={item.id} className="py-4 flex gap-3 first:pt-0">
-                  <img
+                  <SafeImage
                     src={item.image}
                     alt={item.title}
-                    className="w-18 h-18 object-cover rounded-lg border border-[#E5E5E5] shrink-0 bg-[#FAFAF8]"
+                    className="w-18 h-18 object-contain rounded-lg border border-[#E5E5E5] shrink-0 bg-[#FAFAF8] p-1"
                   />
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-start gap-1">

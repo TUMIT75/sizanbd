@@ -5,6 +5,7 @@ import { useStore } from '../../store/useStore';
 import { formatBDT } from '../../utils/formatters';
 import { Heart, Scale, ShoppingBag, Star } from 'lucide-react';
 import { Badge } from '../common/Badge';
+import { SafeImage } from '../common/SafeImage';
 
 interface ProductCardProps {
   product: Product;
@@ -87,14 +88,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           to={`/product/${product.slug}`}
           className="relative w-full sm:w-48 h-44 shrink-0 rounded-lg overflow-hidden bg-[#FAFAF8] flex items-center justify-center p-3"
         >
-          <img
+          <SafeImage
             src={product.thumbnail}
             alt={product.title}
             className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
-            loading="lazy"
           />
           {hasDiscount && (
-            <span className="absolute top-2 left-2 text-[10px] font-bold text-white bg-[#1E5EFF] px-1.5 py-0.5 rounded-sm">
+            <span className="absolute top-2 left-2 text-[10px] font-bold text-white bg-[#1E5EFF] px-1.5 py-0.5 rounded-sm z-20">
               {formatBDT(discountAmount)} OFF
             </span>
           )}
@@ -196,23 +196,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             to={`/product/${product.slug}`}
             className="w-full h-full flex items-center justify-center"
           >
-            <img
+            <SafeImage
               src={product.thumbnail}
               alt={product.title}
               className="max-h-full max-w-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
-              loading="lazy"
             />
           </Link>
 
           {/* Discount Pill */}
           {hasDiscount && (
-            <span className="absolute top-2.5 left-2.5 text-[10px] font-bold text-white bg-[#1E5EFF] px-2 py-0.5 rounded-sm tracking-tight shadow-xs">
+            <span className="absolute top-2.5 left-2.5 text-[10px] font-bold text-white bg-[#1E5EFF] px-2 py-0.5 rounded-sm tracking-tight shadow-xs z-20">
               {formatBDT(discountAmount)} OFF
             </span>
           )}
 
           {/* Quick Actions (Wishlist & Compare) */}
-          <div className="absolute top-2.5 right-2.5 flex flex-col gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
+          <div className="absolute top-2.5 right-2.5 flex flex-col gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity z-20">
             <button
               onClick={handleWishlistClick}
               className={`w-7 h-7 rounded-full flex items-center justify-center shadow-xs transition-colors cursor-pointer ${

@@ -6,6 +6,7 @@ import { Breadcrumb } from '../components/common/Breadcrumb';
 import { Button } from '../components/common/Button';
 import { EmptyState } from '../components/common/EmptyState';
 import { Badge } from '../components/common/Badge';
+import { SafeImage } from '../components/common/SafeImage';
 import { Heart, Trash2, ShoppingBag } from 'lucide-react';
 
 export const WishlistPage: React.FC = () => {
@@ -80,7 +81,7 @@ export const WishlistPage: React.FC = () => {
             <div>
               <div className="relative aspect-square w-full rounded-lg bg-[#FAFAF8] overflow-hidden p-4 mb-3 flex items-center justify-center">
                 <Link to={`/product/${product.slug}`} className="w-full h-full flex items-center justify-center">
-                  <img
+                  <SafeImage
                     src={product.thumbnail}
                     alt={product.title}
                     className="max-h-full max-w-full object-contain"
@@ -88,7 +89,7 @@ export const WishlistPage: React.FC = () => {
                 </Link>
                 <button
                   onClick={() => removeFromWishlist(product.id)}
-                  className="absolute top-2 right-2 text-[#A3A3A3] hover:text-red-600 p-1 rounded-full bg-white border border-[#E5E5E5] transition-colors"
+                  className="absolute top-2 right-2 text-[#A3A3A3] hover:text-red-600 p-1 rounded-full bg-white border border-[#E5E5E5] transition-colors z-20 cursor-pointer"
                   aria-label="Remove from wishlist"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
